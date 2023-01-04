@@ -15,9 +15,9 @@ tags:								#标签
 
 # Lecture 6: Missing Data and EM 
 
-```diff
-! Note 1
-```
+
+### Note 1
+
 
 Model the dataset as a parametric probability density model:
 
