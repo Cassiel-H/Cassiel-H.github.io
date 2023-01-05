@@ -1,0 +1,16 @@
+current directory: /Users/apple/Documents/Blog/Cassiel-H.github.io/vendor/cache/ruby/3.1.0/gems/eventmachine-1.2.7/ext/fastfilereader
+/usr/local/opt/ruby/bin/ruby -I /usr/local/Cellar/ruby/3.1.3/lib/ruby/3.1.0 extconf.rb
+creating Makefile
+
+current directory: /Users/apple/Documents/Blog/Cassiel-H.github.io/vendor/cache/ruby/3.1.0/gems/eventmachine-1.2.7/ext/fastfilereader
+make DESTDIR\= sitearchdir\=./.gem.20230105-85019-961xld sitelibdir\=./.gem.20230105-85019-961xld clean
+
+current directory: /Users/apple/Documents/Blog/Cassiel-H.github.io/vendor/cache/ruby/3.1.0/gems/eventmachine-1.2.7/ext/fastfilereader
+make DESTDIR\= sitearchdir\=./.gem.20230105-85019-961xld sitelibdir\=./.gem.20230105-85019-961xld
+compiling mapper.cpp
+compiling rubymain.cpp
+linking shared-object fastfilereaderext.bundle
+
+current directory: /Users/apple/Documents/Blog/Cassiel-H.github.io/vendor/cache/ruby/3.1.0/gems/eventmachine-1.2.7/ext/fastfilereader
+make DESTDIR\= sitearchdir\=./.gem.20230105-85019-961xld sitelibdir\=./.gem.20230105-85019-961xld install
+/usr/bin/install -c -m 0755 fastfilereaderext.bundle ./.gem.20230105-85019-961xld
