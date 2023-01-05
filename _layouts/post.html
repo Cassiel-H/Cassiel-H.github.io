@@ -18,7 +18,7 @@ layout: default
         width: 100%;
         height: 100%;
         position: absolute;
-        background: rgba(0,0,0, {{ page.header-mask }});
+        background: rgba(0,0,0, '{{ page.header-mask }}');
     }
     {% endif %}
 </style>
@@ -98,7 +98,7 @@ layout: default
                     repo: '{{site.gitalk.repo}}',
                     owner: '{{site.gitalk.owner}}',
                     admin: ['{{site.gitalk.admin}}'],
-                    distractionFreeMode: {{site.gitalk.distractionFreeMode}},
+                    distractionFreeMode: ```{{site.gitalk.distractionFreeMode}}```,
                     id: md5(location.pathname),
                     });
                     gitalk.render('gitalk-container');
