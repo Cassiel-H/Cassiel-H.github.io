@@ -1,12 +1,12 @@
 {
-    "name": "by-blog",
-    "title": "BY Blog",
-    "author": "BY <qiubaiyingios@163.com>",
+    "name": "Cassiel-blog",
+    "title": "Cassiel Blog",
+    "author": "Cassiel <jihuo@student.unimelb.edu.au>",
     "version": "1.7.0",
-    "homepage": "http://qiubaiying.github.io",
+    "homepage": "https://cassiel-h.github.io/",
     "repository": {
         "type": "git",
-        "url": "https://github.com/qiubaiying/qiubaiying.github.io"
+        "url": "https://github.com/Cassiel-H/Cassiel-H.github.io"
     },
     "bugs": "https://github.com/qiubaiying/qiubaiying.github.io/issues",
     "devDependencies": {
