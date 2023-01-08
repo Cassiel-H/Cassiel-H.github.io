@@ -5,9 +5,9 @@ subtitle:   一些使用markdown书写数学公式的tips！ #副标题
 date:       2023-01-08 				# 时间
 author:     Cassiel Huo  						# 作者
 header-img: img/csds.jpeg 	#这篇文章标题背景图片
-header-includes:
-        - \usepackage{mathptmx}
-        - \usepackage{amsmath}
+# header-includes:
+#         - \usepackage{mathptmx}
+#         - \usepackage{amsmath}
 #     -\usepackage[utf8]{inputenc}
 catalog: true 						# 是否归档
 mathjax: true                       # 是否启用 MathJax
