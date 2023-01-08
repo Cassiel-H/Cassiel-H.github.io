@@ -6,13 +6,36 @@ header-img: "img/post-bg-rwd.jpg"
 ---
 
 <!-- Language Selector -->
-<!-- <select class="sel-lang" onchange= "onLanChange(this.options[this.options.selectedIndex].value)">
-    <option value="0" selected> 中文 Chinese </option>
-    <option value="1"> 英文 English </option>
-</select> -->
+<select class="sel-lang" onchange= "onLanChange(this.options[this.options.selectedIndex].value)">
+    <!-- <option value="1" selected> 中文 Chinese </option> -->
+    <option value="0"> 英文 English </option>
+    <option value="1" selected> 中文 Chinese </option>
+</select>
+
+<!-- English Version -->
+<div class="zh post-container">
+    <blockquote><p>Cassiel Huo needs internships and jobs! <br>
+    Please Contact Me Thx!</p></blockquote>
+
+    <p>Hi, I am <strong>Cassiel Huo</strong>, currently a Master of Data Science Student @ Unimelb. I'm actively seeking internships and jobs related to Machine Learning/ Data Science/ Data Analytics field</p>
+
+    <p>This is my personal blog, through making Github Pages and Jekyll.My GitHub  👉 <a href="https://github.com/Cassiel-H">Github·Cassiel Huo</a>.</p>
+    
+    <p>I do Hip-Pop Dances and I'm a super fan of Coffee Culture!!</p>
+
+    <!-- <h5>Talks</h5>
+
+    <ul>
+    <li><a href="https://github.com">GitHub</a></li>
+    <li><a href="http://jekyll.com.cn/">jekyll</a></li>
+    <li><a href="https://pages.github.com/">GitHub Pages</a></li>
+    <li><a href="https://qiubaiying.github.io">BY</a></li>
+    </ul> -->
+</div> 
+
 
 <!-- Chinese Version -->
-<div class="zh post-container">
+<div class="en post-container">
 
     <!--copied from markdown -->
     <blockquote><p>我目前还 想不到啥<br>
@@ -20,11 +43,11 @@ header-img: "img/post-bg-rwd.jpg"
 
     <p>Hiiii，我是<strong>小霍(Cassiel)</strong>，一位正在苦学技术的master of Data Science 学生，有合适的实习/工作机会还请老板们多多照顾！</p>
 
-    <p>下面的这些都是原bo写的！跟我没啥关系，我还不知道要改啥！</p>
+    <p>本篇blog是根据<a href="https://yey.world/">YEY</a>和<a href="https://qiubaiying.github.io/">BY</a>BY的Blog改编来的</p>
 
-    <p>这是我的利用 <a href="https://pages.github.com/">GitHub Pages</a> 与 <a href="http://jekyll.com.cn/">Jekyll</a> 搭建的 个人博客。我在GitHub主页<a href="https://github.com/qiubaiying">👉GitHub·BY</a> 与 简书主页<a href="https://http://www.jianshu.com/u/e71990ada2fd">👉BY</a>。如果有什么问题，欢迎提出探讨~</p>
+    <p>我在GitHub主页<a href="https://github.com/Cassiel-H">👉GitHub·Cassiel</a> 与 Linkedin主页<a href="https://www.linkedin.com/in/cassiel-huo-1010841b4/">👉Cassiel Huo</a>。如果有什么问题，欢迎提出探讨~</p>
 
-    <p></p>
+    <!-- <p></p>
     
     <h5>Talks</h5>
 
@@ -33,29 +56,10 @@ header-img: "img/post-bg-rwd.jpg"
         <li><a href="http://jekyll.com.cn/">jekyll</a></li>
         <li><a href="http://huangxuan.me/">Hux</a></li> 
         <li><a href="https://analytics.google.com/analytics">Google Analytics</a></li>
-    </ul>
+    </ul> -->
 </div>
 
-<!-- English Version -->
-<!-- <div class="en post-container">
-    <blockquote><p>Yet another iOS Developer. <br>
-    Yet another Life-long Student.</p></blockquote>
 
-    <p>Hi, I am <strong>Baiying Qiu</strong>，you can call me <strong>BY</strong>. I am an iOS software engineer and currently working in Xiamen</p>
-
-    <p>This is my personal blog, through making Github Pages and Jekyll.My GitHub  👉 <a href="http://github.com/qiubaiying">Github·BY</a>.</p>
-    
-    <p>I am a sports enthusiast, I like fitness, running and boxing.</p>
-
-    <h5>Talks</h5>
-
-    <ul>
-    <li><a href="https://github.com">GitHub</a></li>
-    <li><a href="http://jekyll.com.cn/">jekyll</a></li>
-    <li><a href="https://pages.github.com/">GitHub Pages</a></li>
-    <li><a href="https://qiubaiying.github.io">BY</a></li>
-    </ul>
-</div> -->
 
 <!-- Handle Language Change -->
 <script type="text/javascript">
@@ -99,9 +103,9 @@ header-img: "img/post-bg-rwd.jpg"
 
 
 <!-- Gitalk 评论 start  -->
-{% if site.gitalk.enable %}
+<!-- {% if site.gitalk.enable %} -->
 <!-- Gitalk link  -->
-<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<!-- <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
 <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script>
 
 <div id="gitalk-container"></div>
@@ -112,36 +116,36 @@ header-img: "img/post-bg-rwd.jpg"
     repo: '{{site.gitalk.repo}}',
     owner: '{{site.gitalk.owner}}',
     admin: ['{{site.gitalk.admin}}'],
-    distractionFreeMode: {{site.gitalk.distractionFreeMode}},
+    distractionFreeMode: `{{site.gitalk.distractionFreeMode}}`,
     id: 'about',
     });
     gitalk.render('gitalk-container');
 </script>
-{% endif %}
+{% endif %} -->
 <!-- Gitalk end -->
 
  <!-- disqus 评论框 start  -->
-{% if site.disqus.enable %}
+<!-- {% if site.disqus.enable %} -->
 
-<div class="comment">
+<!-- <div class="comment">
     <div id="disqus_thread" class="disqus-thread">
     </div>
-</div>
+</div> -->
 <!-- disqus 评论框 end -->
 
 <!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
-    var disqus_shortname = "{{site.disqus.username}}";
-    var disqus_identifier = "{{site.disqus.username}}/{{page.url}}";
-    var disqus_url = "{{site.url}}{{page.url}}";
+//     var disqus_shortname = "{{site.disqus.username}}";
+//     var disqus_identifier = "{{site.disqus.username}}/{{page.url}}";
+//     var disqus_url = "{{site.url}}{{page.url}}";
 
-    (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-</script>
+//     (function() {
+//         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+//         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+//         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+//     })();
+// </script>
 <!-- disqus 公共JS代码 end -->
-{% endif %}
+<!-- {% endif %} -->
 
