@@ -56,6 +56,8 @@ Some tutorial would tell you to include the math package inside the YAML header 
 
 But I find it's okay to omit this one, but if it doesn't work on your case maybe give it a try.
 
+**`Update`** : Adding the above script works fine when locally testing the website, but not supported by github-page, so it will cause this blog not showing on the website!!
+
 ## 3. Multiple Line Math Equation
 Write everything same as using Latex except for wrap the whole `\begin{equation}` and `\begin{split}` with `$$` outside, for example the following equation is created by:
 
