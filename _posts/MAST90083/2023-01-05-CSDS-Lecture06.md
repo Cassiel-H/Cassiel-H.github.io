@@ -6,6 +6,7 @@ date:       2023-01-05 				# 时间
 author:     Cassiel Huo  						# 作者
 header-img: img/csds.jpeg 	#这篇文章标题背景图片
 header-includes:
+   - \usepackage{xspace}
    - \usepackage{amsmath,amssymb}
    - \usepackage{mathptmx}
 catalog: true 						# 是否归档
@@ -234,3 +235,201 @@ Where $\pi$ is the probability of Z=1, and we can think $\gamma(Z)$ as the respo
     \end{split}
     \end{equation}
     $$
+
+
+### Note 7: `How does it work`
+
+When to use EM: Have missing values, e.g. unknown clusters; Assume hidden parameter; Multiple distributions. Now to introduce some terminologies:   
+
+* Observed data pdf: g(y\|$\theta$)
+* Complete-data likelihood : f(y,Z \| $\theta$) = L($\theta$ \|y,Z)
+* Expected value of complete-data likelihood: Q($\theta,\theta^{i-1}$)
+* Unobserved data pdf: $\dot{k}(Z\|y,\theta^{i-1})$
+
+Our goal is to find MLE of $\theta$ by maximizing ln g(y\|$\theta$), can be done by taking expected value:
+
+**E-Step:**  For a given value of $\theta^{i-1}$ and the observed dataset y, we evaluate Q($\theta,\theta^{i-1}$)
+
+$$
+\begin{equation}
+        Q(\theta,\theta^{i-1}) = E [ln \textit{f}(y,Z | \theta) | Y, \theta^{i-1}] 
+                                = \int_{y} ln \textit{f}(y,Z | \theta) \dot{k}(Z|y,\theta^{i-1}) dy
+\end{equation}
+$$
+
+ This is given by the expectation of conditional density :
+
+$$
+\begin{equation}
+        E [h(y) | X=x] = \int_{y} h(y)\dot{f}(y|x) dy
+\end{equation}
+$$
+
+If we think by changing the parameter, X in equation(21) is (y,$\theta^{i-1}$) in equation(20), and y in equation(21) is (y,Z\|$\theta$) in equation(20). Thus we obtain $y\|x = (y,Z\|\theta) \| y,\theta^{i-1} = Z\|y,\theta^{i-1}$
+
+**M Step:**
+
+ Maximize $Q(\theta,\theta^{i-1})$ with respect to $\theta$
+$$
+\begin{equation}
+    \theta^i = \arg \max_{\theta} Q(\theta,\theta^{i-1})
+\end{equation}
+$$
+
+The stopping criteria: stop until the following is less than threshold $\epsilon$
+
+$$
+\begin{equation}
+    || \theta^{(r+1)} - \theta^{(r)}|| \quad or \quad |Q(\theta^{(r+1)},\theta^{(r)}) - Q(\theta^{(r)},\theta^{(r)})|
+\end{equation}
+$$
+
+**OR a GEM is: (another M step)**
+
+ Find $\theta^{(r+1)}$ so that: 
+
+$$
+\begin{equation}
+    Q(\theta^{(r+1)},\theta^{(r)}) > Q(\theta^{(r)},\theta^{(r)})
+\end{equation}
+$$
+
+
+### Note 8: `Using property to explain`
+
+Each iteration of EM update is guaranteed to increase the log L (complete-data log-likelihood), but also increase the observed data log-likelihood, starting from the following property:
+
+$$
+\begin{equation}
+    k(Z|y,\theta) = \frac{f(y,Z|\theta)}{g(y|\theta)} \rightarrow{hidden = \frac{complete}{observed}}
+\end{equation}
+$$
+
+And we have:
+$$
+\begin{equation}
+    \ln{f(y,Z|\theta)} = \ln{g(y|\theta)} + \ln{k(Z|y,\theta)}
+\end{equation}
+$$
+
+If taking expectations on both sides, then we have a super-duper long equation:
+
+$$
+\begin{equation}
+\begin{split}
+    E_Z [\ln{f(y,Z|\theta)} | y,\theta'] &= \ln{g(y|\theta)} +  E_Z [\ln{k(Z|y,\theta)} | y,\theta'] \\
+    \int{k(z|y,\theta') \ln{f(y,Z|\theta)}dz} &= \ln{g(y|\theta)} + \int{k(z|y,\theta') \ln{k(Z|y,\theta)}dz} \\
+    Q(\theta,\theta') &= \ln{g(y|\theta)} + H(\theta,\theta')
+\end{split}
+\end{equation}
+$$
+
+Goal is to find $\theta''$, given any $\theta'$ which $Q(\theta'',\theta') = \max_{\theta} Q(\theta,\theta')$, this will guarantee that :
+
+$$
+\begin{equation}
+    \ln{g(y|\theta'')} \ge \ln{g(y|\theta')}    
+\end{equation}
+$$
+
+
+### Note 9: `Jensen's inequality`
+
+This is to prove that each iteration of EM's choice of $\theta'$ will reduce the entropy, lets see: 
+
+$$
+\begin{equation}
+    E{g(X)} \le g(E{(X)}) \quad  if g(.) concave
+\end{equation}
+$$
+
+By the above inequality:
+
+<p align="center">
+    <img src="/media/em.png" width="50%">
+</p>
+
+Which implies: 
+$$
+\begin{equation}
+    E (\ln{\frac{k(Z|y,\theta)}{k(Z|y,\theta')}} | y,\theta') \le 0
+\end{equation}
+$$
+
+and: 
+$$
+\begin{equation}
+    E [\ln{k(Z|y,\theta')} | y,\theta'] - E [\ln{k(Z|y,\theta')} | y,\theta'] \le 0
+\end{equation}
+$$
+
+Which implies: 
+$$
+\begin{equation}
+    H(\theta,\theta') \le H(\theta',\theta')
+\end{equation}
+$$
+
+
+Then, the result we want (each iteration increases the observed-data log-likelihood as in Note 8) at equation (28) can be shown from both equations (24) and (33), this is literally Note 10's theorem but I will still write for ANOTHER TIME...:
+
+$$
+\begin{equation}
+    Q(\theta'',\theta') \ge Q(\theta',\theta') \quad and \quad  H(\theta'',\theta') \le H(\theta',\theta')
+\end{equation}
+$$
+
+
+### Note 10: `Dempster, Laird and Rubin 1977`
+
+(Basically the same thing) Every EM or GEM increase the observed-data log-likelihood at each iteration as:
+$$
+\begin{equation}
+    \ln{g(y|\theta^{(r+1)})} \ge \ln{g(y|\theta^{(t)})}    
+\end{equation}
+$$
+
+with the equality holds iff $Q(\theta^{(r+1)},\theta^{(r)}) \ge Q(\theta^{(r)},\theta^{(r)})$ as we have :
+
+$$
+\begin{equation}
+\begin{split}
+    \ln{g(y|\theta^{(r+1)})} &= Q(\theta^{(r+1)},\theta^{(r)}) - H(\theta^{(r+1)},\theta^{(r)}) \\
+     \ln{g(y|\theta^{(r)})} &= Q(\theta^{(r)},\theta^{(r)}) - H(\theta^{(r)},\theta^{(r)})
+\end{split}
+\end{equation}
+$$
+
+
+### Note 11: `Newton-Raphson`
+
+This is a method of finding the roots (zeros) of a real-valued function, is more general optimization that can be used to find the MLE, and can be faster than EM but may be less stable numerically and less tractable analytically. 
+
+* **alculating the tangent line** by substitute the coordinate of our guess $(x_0, f(x_0))$:
+
+    $$
+    \begin{equation}
+            f(x_0) = a + f'(x_0) x_0 \quad \rightarrow \quad a = f(x_0) - f'(x_0)x_0
+    \end{equation}
+    $$
+
+    and rewrite: 
+    $$
+    \begin{equation}
+        y = f(x_0) - f'(x_0)x_0 +f'(x_0)x
+    \end{equation}
+    $$
+
+* **Get new $x_1$**:
+
+    $$
+    \begin{equation}
+    \begin{split}
+        0 &= f(x_0) - f'(x_0)x_0 +f'(x_0)x_1 \\
+        0 &= f(x_0) + f'(x_0)(x_1-x_0) \\
+        x_1 &= x_0 - \frac{f(x_0)}{f'(x_0)}
+    \end{split}
+    \end{equation}
+    $$
+
+
