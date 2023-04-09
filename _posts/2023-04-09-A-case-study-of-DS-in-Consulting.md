@@ -8,11 +8,10 @@ header-img: img/bg_1.jpeg 	#这篇文章标题背景图片
 catalog: true 						# 是否归档
 mathjax: true                       # 是否启用 MathJax
 tags:								#标签
-    - Markdown
-    - Tutorial
+
 ---
 
-> This is based on a University of Melbourne's case study on specific career path, aimed to provide information resource for STEM students whether they should choose this career or not.
+> This is based on a University of Melbourne's case study on specific career path, aimed to provide information resource for STEM students whether they should choose this career or not. -- Author: Cassiel
 
 
 ## The Needs of Data Scientist Consultants
